@@ -39,7 +39,7 @@ CatmullRomSpline_Const = [ ...
 CurveConstant = CatmullRomSpline_Const;
 
 SamplingPeriod = 0.1; % Sampling period of time state controller (s)
-SimPeriod = 0.1; % スコープのサンプリング周期 (s)
+SimPeriod = 1; % スコープのサンプリング周期 (s)
 SimTime = 30; % シミュレーション時間 (s)
 
 % シミュレーション実行
@@ -112,6 +112,8 @@ for time_cnt = 1:length( PlantOutput )
         end
         plot( curve(:,1), curve(:,2), 'Color', [0.5,0.5,0.5] );
     end
+    
+    saveas( figure(1), strcat( num2str( time_cnt ), '.png' ) );
     
     pause( SimPeriod - double( toc( currentTime ) ) );
 end
